@@ -258,6 +258,19 @@ footer a{color:var(--green)}
   </div>
 </section>
 
+
+<section id="quiz">
+  <span class="pill">TEST YOUR KNOWLEDGE</span>
+  <h2 class="heading" style="margin-top:14px">🌍 Environmental Quiz</h2>
+  <p class="sub">Test your knowledge of protecting our planet!</p>
+  <div class="card">
+    <h3 id="quizQuestion">Which gas contributes to global warming?</h3>
+    <div id="quizOptions" class="grid" style="grid-template-columns:1fr 1fr"></div>
+    <p id="quizFeedback" aria-live="polite"></p>
+    <p id="quizScore"></p>
+    <button class="btn" id="quizNext" type="button">Start quiz</button>
+  </div>
+</section>
 <section id="pledge">
   <span class="pill">MAKE A COMMITMENT</span>
   <h2 class="heading" style="margin-top:14px">My green pledge</h2>
@@ -428,6 +441,66 @@ $("sharePledge").addEventListener("click", async () => {
     }
   }
 });
+
+const questions = [
+  {q:"Which gas contributes to global warming?",a:["Oxygen","Carbon dioxide","Helium","Hydrogen"],c:1},
+  {q:"Which is a renewable energy source?",a:["Coal","Petrol","Solar energy","Natural gas"],c:2},
+  {q:"What helps reduce plastic waste?",a:["Reusable bags","More wrappers","Littering","Burning plastic"],c:0},
+  {q:"How can you save water?",a:["Leave taps running","Fix leaking taps","Waste clean water","Ignore leaks"],c:1},
+  {q:"What is biodiversity?",a:["Only trees","Only oceans","Variety of life","Plastic recycling"],c:2}
+];
+let qi=0, score=0, answered=false, started=false;
+
+function drawQuiz(){
+  const q=questions[qi];
+  document.getElementById("quizQuestion").textContent=q.q;
+  document.getElementById("quizFeedback").textContent="";
+  document.getElementById("quizScore").textContent="Question "+(qi+1)+" of "+questions.length;
+  const box=document.getElementById("quizOptions");
+  box.replaceChildren();
+  q.a.forEach((answer,i)=>{
+    const b=document.createElement("button");
+    b.className="btn secondary";
+    b.type="button";
+    b.textContent=answer;
+    b.onclick=()=>{
+      if(answered)return;
+      answered=true;
+      if(i===q.c){
+        score++;
+        document.getElementById("quizFeedback").textContent="✅ Correct! Great job!";
+      }else{
+        document.getElementById("quizFeedback").textContent="❌ Correct answer: "+q.a[q.c];
+      }
+      box.querySelectorAll("button").forEach(x=>x.disabled=true);
+      document.getElementById("quizNext").disabled=false;
+    };
+    box.appendChild(b);
+  });
+  document.getElementById("quizNext").textContent="Next question →";
+  document.getElementById("quizNext").disabled=true;
+  answered=false;
+}
+
+document.getElementById("quizNext").onclick=()=>{
+  if(!started){
+    started=true;
+    qi=0;
+    score=0;
+    drawQuiz();
+  }else if(qi<questions.length-1 && answered){
+    qi++;
+    drawQuiz();
+  }else if(qi===questions.length-1 && answered){
+    document.getElementById("quizQuestion").textContent="🎉 Quiz complete!";
+    document.getElementById("quizOptions").replaceChildren();
+    document.getElementById("quizFeedback").textContent="";
+    document.getElementById("quizScore").textContent="Your score: "+score+" / "+questions.length;
+    document.getElementById("quizNext").textContent="Play again 🔄";
+    started=false;
+    document.getElementById("quizNext").disabled=false;
+  }
+};
 </script>
 </body>
 </html>
