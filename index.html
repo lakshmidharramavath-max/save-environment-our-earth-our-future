@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071b15">
+<meta name="description" content="Save Environment — discover practical ways to protect nature, reduce waste and build a greener future.">
+<title>Save Environment | Our Earth, Our Future</title>
+<style>
+:root{
+  --bg:#071b15;--panel:#102b21;--green:#83f0ad;
+  --text:#f2fff5;--muted:#b5cbbd;--line:#294b39;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Arial,Helvetica,sans-serif;line-height:1.65}
+a{color:inherit}
+button,input,select{font:inherit}
+button,a{touch-action:manipulation}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+outline:3px solid var(--green);outline-offset:3px}
+header{position:sticky;top:0;z-index:20;background:#071b15ed;
+backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{max-width:1200px;margin:auto;padding:14px 22px;display:flex;
+align-items:center;justify-content:space-between;gap:18px}
+.brand{font-size:19px;font-weight:800;color:var(--green);text-decoration:none}
+nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted);font-size:14px}
+nav a:hover{color:var(--green)}
+.menu{display:none;background:transparent;color:white;border:1px solid var(--line);
+border-radius:8px;padding:7px 10px}
+.hero{min-height:620px;display:flex;align-items:center;
+background:linear-gradient(90deg,#04140ff5 0%,#04140fc9 48%,#04140f35 100%),
+url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=2000&q=85') center/cover}
+.hero-inner{width:100%;max-width:1200px;margin:auto;padding:95px 24px}
+.eyebrow{color:var(--green);text-transform:uppercase;letter-spacing:3px;
+font-size:12px;font-weight:bold}
+h1{font-size:clamp(44px,7vw,82px);line-height:1.04;max-width:820px;margin:18px 0}
+h1 span{color:var(--green)}
+.hero p{font-size:18px;color:#e0eee4;max-width:630px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;padding:12px 20px;border-radius:7px;border:1px solid var(--green);
+background:var(--green);color:#092017;font-weight:bold;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn.secondary{background:transparent;color:var(--text);border-color:#a1c5ad}
+main section{max-width:1200px;margin:auto;padding:72px 24px}
+.heading{font-size:clamp(28px,4vw,42px);line-height:1.2;margin:0 0 12px}
+.sub{color:var(--muted);max-width:720px;margin:0 0 30px}
+.pill{display:inline-block;color:var(--green);border:1px solid var(--line);
+padding:5px 11px;border-radius:30px;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;
+padding:24px;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-3px);border-color:#73c995}
+.card h3{margin:8px 0;color:#d8ffe3}
+.card p{margin:0;color:var(--muted)}
+.icon{font-size:30px}
+.photo{width:100%;height:175px;object-fit:cover;border-radius:8px;margin-bottom:12px}
+.band{background:#0b251b;border-block:1px solid var(--line)}
+.band-inner{max-width:1200px;margin:auto;padding:48px 24px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{padding:20px;text-align:center;border:1px solid var(--line);
+border-radius:10px;background:#102b21}
+.stat strong{display:block;font-size:30px;color:var(--green)}
+.stat span{font-size:13px;color:var(--muted)}
+.challenge{display:flex;align-items:flex-start;gap:12px;margin:14px 0;
+padding:14px;background:#0a2118;border-radius:9px;border:1px solid var(--line)}
+.challenge input{width:19px;height:19px;accent-color:#83f0ad;margin-top:5px}
+.challenge label{flex:1;cursor:pointer}
+.challenge small{display:block;color:var(--muted)}
+.progress{height:10px;background:#263c30;border-radius:20px;overflow:hidden;margin:18px 0 8px}
+.progress-bar{height:100%;width:0;background:var(--green);transition:width .25s}
+.field{display:block;margin:14px 0 6px;color:#d8ffe3;font-weight:bold;font-size:14px}
+input[type=text],select{width:100%;padding:12px;background:#071b15;
+color:var(--text);border:1px solid #42614e;border-radius:7px}
+.result{margin-top:18px;padding:16px;background:#0a2118;border-radius:8px;
+border:1px solid var(--line);color:var(--green)}
+.notice{font-size:12px;color:var(--muted);margin-top:12px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:start}
+.cta{background:linear-gradient(130deg,#123d2b,#091b14);
+border:1px solid var(--line);border-radius:15px;padding:32px}
+footer{border-top:1px solid var(--line);padding:30px 24px;color:var(--muted);
+text-align:center;font-size:14px}
+footer strong{color:var(--green)}
+footer a{color:var(--green)}
+.hidden{display:none}
+@media(max-width:800px){
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .two-col{grid-template-columns:1fr}
+ nav{gap:12px}
+}
+@media(max-width:560px){
+ .nav{flex-wrap:wrap}
+ .menu{display:block}
+ nav{display:none;width:100%;flex-direction:column;align-items:flex-start;padding:10px 0}
+ nav.open{display:flex}
+ .hero{min-height:570px}
+ .hero-inner{padding:70px 22px}
+ .grid{grid-template-columns:1fr}
+ main section{padding:55px 20px}
+ .heading{font-size:30px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{transition:none!important}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="brand" href="#home">🌍 SAVE EARTH</a>
+    <button class="menu" id="menuBtn" aria-expanded="false" aria-controls="navigation">☰ Menu</button>
+    <nav id="navigation">
+      <a href="#mission">Our mission</a>
+      <a href="#issues">Environmental issues</a>
+      <a href="#challenges">Eco challenges</a>
+      <a href="#calculator">Footprint tool</a>
+      <a href="#pledge">Make a pledge</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="eyebrow">Our Earth. Our responsibility.</div>
+    <h1>A greener world<br>starts <span>with us.</span></h1>
+    <p>Discover practical ways to protect forests, save water, reduce waste and care for the planet we share.</p>
+    <div class="actions">
+      <a class="btn" href="#challenges">Start an eco challenge ↗</a>
+      <a class="btn secondary" href="#mission">Explore our mission</a>
+    </div>
+    <p style="font-size:13px">Small, consistent actions can make a meaningful difference.</p>
+  </div>
+</section>
+
+<div class="band">
+  <div class="band-inner">
+    <div class="eyebrow">A healthier planet</div>
+    <h2 class="heading">Change begins with everyday choices.</h2>
+    <p class="sub">This website helps you learn, make a personal plan and track your own environmental actions.</p>
+    <div class="stats">
+      <div class="stat"><strong>🌳</strong><span>Protect green spaces</span></div>
+      <div class="stat"><strong>💧</strong><span>Use water wisely</span></div>
+      <div class="stat"><strong>♻️</strong><span>Reduce waste</span></div>
+      <div class="stat"><strong>⚡</strong><span>Save energy</span></div>
+    </div>
+  </div>
+</div>
+
+<main>
+<section id="mission">
+  <span class="pill">WHY IT MATTERS</span>
+  <h2 class="heading" style="margin-top:14px">Our mission</h2>
+  <p class="sub">We believe environmental awareness should lead to practical action. Start with what you can do at home, at school and in your community.</p>
+  <div class="grid">
+    <article class="card">
+      <div class="icon">🌲</div><h3>Protect nature</h3>
+      <p>Care for trees, native plants and wildlife habitats. Never disturb wild animals or their nests.</p>
+    </article>
+    <article class="card">
+      <div class="icon">🚰</div><h3>Conserve water</h3>
+      <p>Turn taps off when not needed, report leaks and avoid wasting clean water.</p>
+    </article>
+    <article class="card">
+      <div class="icon">🔋</div><h3>Use energy wisely</h3>
+      <p>Switch off unused lights and devices. Choose efficient appliances when possible.</p>
+    </article>
+    <article class="card">
+      <div class="icon">🛍️</div><h3>Choose reusables</h3>
+      <p>Carry a reusable bottle or bag and avoid unnecessary disposable products.</p>
+    </article>
+    <article class="card">
+      <div class="icon">🚲</div><h3>Travel thoughtfully</h3>
+      <p>For suitable journeys, consider walking, cycling, public transport or sharing a ride.</p>
+    </article>
+    <article class="card">
+      <div class="icon">🤝</div><h3>Inspire others</h3>
+      <p>Share reliable information and work with classmates, friends or local groups on useful projects.</p>
+    </article>
+  </div>
+</section>
+
+<section id="issues">
+  <span class="pill">UNDERSTAND THE CHALLENGES</span>
+  <h2 class="heading" style="margin-top:14px">Environmental issues</h2>
+  <p class="sub">Learn what these problems mean and what practical steps can help.</p>
+  <div class="grid">
+    <article class="card">
+      <img class="photo" loading="lazy" alt="Forest landscape" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=700&q=80">
+      <h3>Deforestation</h3>
+      <p>Forest loss threatens biodiversity and affects ecosystems. Protect existing forests and support responsible land use.</p>
+    </article>
+    <article class="card">
+      <img class="photo" loading="lazy" alt="Plastic waste on a beach" src="https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=700&q=80">
+      <h3>Plastic pollution</h3>
+      <p>Plastic waste can harm wildlife and pollute waterways. Reduce unnecessary plastic and dispose of waste properly.</p>
+    </article>
+    <article class="card">
+      <img class="photo" loading="lazy" alt="Smoky industrial landscape" src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?auto=format&fit=crop&w=700&q=80">
+      <h3>Climate change</h3>
+      <p>Greenhouse gas emissions warm the planet. Cleaner energy, efficiency and low-emission transport are part of the solution.</p>
+    </article>
+  </div>
+  <p class="notice">Images load from Unsplash and require an internet connection. Environmental information here is educational, not a live measurement of local conditions.</p>
+</section>
+
+<section id="challenges">
+  <span class="pill">YOUR PERSONAL DASHBOARD</span>
+  <h2 class="heading" style="margin-top:14px">7-day eco challenge</h2>
+  <p class="sub">Tick each action after you complete it. Your progress is saved in this browser on this device.</p>
+  <div class="two-col">
+    <div class="card">
+      <h3>🌱 Your weekly progress</h3>
+      <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+      <p id="progressText" aria-live="polite">0 of 7 actions completed</p>
+      <div class="actions">
+        <button class="btn secondary" id="resetChallenges" type="button">Reset checklist</button>
+      </div>
+      <p class="notice">This tracks your checklist only. It does not measure your actual carbon savings.</p>
+    </div>
+    <div>
+      <div class="challenge"><input type="checkbox" id="c1"><label for="c1">Carry a reusable bottle<small>Avoid a disposable bottle where practical.</small></label></div>
+      <div class="challenge"><input type="checkbox" id="c2"><label for="c2">Switch off unused lights<small>Save electricity when lights are not needed.</small></label></div>
+      <div class="challenge"><input type="checkbox" id="c3"><label for="c3">Avoid wasting food<small>Plan meals and keep leftovers safely.</small></label></div>
+      <div class="challenge"><input type="checkbox" id="c4"><label for="c4">Use a reusable bag<small>Keep one ready for shopping.</small></label></div>
+      <div class="challenge"><input type="checkbox" id="c5"><label for="c5">Save water<small>Use only what you need.</small></label></div>
+      <div class="challenge"><input type="checkbox" id="c6"><label for="c6">Pick up litter safely<small>Use protection and never handle sharp or hazardous waste.</small></label></div>
+      <div class="challenge"><input type="checkbox" id="c7"><label for="c7">Share one reliable eco fact<small>Help someone learn a useful environmental tip.</small></label></div>
+    </div>
+  </div>
+</section>
+
+<section id="calculator">
+  <span class="pill">LEARN ABOUT YOUR IMPACT</span>
+  <h2 class="heading" style="margin-top:14px">Travel emissions estimator</h2>
+  <p class="sub">Estimate emissions for a car journey. This is a simplified example, not a complete personal carbon-footprint calculator.</p>
+  <div class="two-col">
+    <div class="card">
+      <label class="field" for="distance">Distance travelled (kilometres)</label>
+      <input type="text" inputmode="decimal" id="distance" placeholder="e.g. 10">
+      <label class="field" for="fuelType">Vehicle type</label>
+      <select id="fuelType">
+        <option value="0.192">Petrol car — example factor</option>
+        <option value="0.171">Diesel car — example factor</option>
+        <option value="0.105">Electric car — example grid factor</option>
+      </select>
+      <button class="btn" id="calculate" type="button" style="margin-top:18px">Estimate emissions</button>
+    </div>
+    <div class="card">
+      <h3>Estimated result</h3>
+      <div id="calcResult" class="result" aria-live="polite">Enter a distance to see an estimate.</div>
+      <p class="notice">Illustrative factors in kg CO₂e per vehicle-kilometre. Actual emissions vary by vehicle, occupancy, electricity mix and driving conditions. These factors are not live or location-specific.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pledge">
+  <span class="pill">MAKE A COMMITMENT</span>
+  <h2 class="heading" style="margin-top:14px">My green pledge</h2>
+  <p class="sub">Choose one realistic action you want to work on. Your pledge stays in this browser unless you choose to share it yourself.</p>
+  <div class="cta">
+    <form id="pledgeForm">
+      <label class="field" for="personName">Your name or nickname</label>
+      <input type="text" id="personName" maxlength="50" placeholder="Enter your name" required>
+      <label class="field" for="pledgeChoice">I promise to...</label>
+      <select id="pledgeChoice">
+        <option>Reduce single-use plastic</option>
+        <option>Save water every day</option>
+        <option>Save electricity</option>
+        <option>Reduce food waste</option>
+        <option>Keep my surroundings clean</option>
+        <option>Care for plants and nature</option>
+        <option>Encourage others to protect Earth</option>
+      </select>
+      <div class="actions">
+        <button class="btn" type="submit">Save my pledge 💚</button>
+        <button class="btn secondary" type="button" id="sharePledge">Share pledge</button>
+      </div>
+    </form>
+    <div id="pledgeResult" class="result hidden" aria-live="polite"></div>
+    <p class="notice">Privacy: the pledge is stored locally in this browser. It is not sent to the website owners and will not automatically appear on other visitors' devices.</p>
+  </div>
+</section>
+
+<section>
+  <div class="card">
+    <h2 class="heading">Keep learning. Keep caring.</h2>
+    <p class="sub" style="margin-bottom:0">Use trustworthy environmental sources to learn more about conservation and climate action.</p>
+    <div class="actions">
+      <a class="btn secondary" href="https://www.unep.org/" target="_blank" rel="noopener noreferrer">UN Environment Programme ↗</a>
+      <a class="btn secondary" href="https://www.ipcc.ch/" target="_blank" rel="noopener noreferrer">IPCC climate science ↗</a>
+      <a class="btn secondary" href="https://moef.gov.in/" target="_blank" rel="noopener noreferrer">India's Environment Ministry ↗</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>🌍 Protecting nature starts with all of us.</p>
+  <p>Created with 💚 by <strong>Lakshmidhar &amp; Chinmai</strong></p>
+  <p>Educational environmental awareness website · <span id="year"></span></p>
+  <p><a href="#home">Back to top ↑</a></p>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+$("year").textContent = new Date().getFullYear();
+
+const nav = $("navigation");
+$("menuBtn").addEventListener("click", () => {
+  const open = nav.classList.toggle("open");
+  $("menuBtn").setAttribute("aria-expanded", String(open));
+});
+nav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => {
+  nav.classList.remove("open");
+  $("menuBtn").setAttribute("aria-expanded", "false");
+}));
+
+function safeLoad(key, fallback) {
+  try {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+function safeSave(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function updateChallenges() {
+  let count = 0;
+  for (let i = 1; i <= 7; i++) {
+    if ($("c" + i).checked) count++;
+  }
+  $("progressBar").style.width = (count / 7 * 100) + "%";
+  $("progressText").textContent = count + " of 7 actions completed";
+  safeSave("saveEarthChallenges", Array.from({length:7}, (_,i) => $("c"+(i+1)).checked));
+}
+const savedChallenges = safeLoad("saveEarthChallenges", []);
+for (let i = 1; i <= 7; i++) {
+  $("c" + i).checked = savedChallenges[i-1] === true;
+  $("c" + i).addEventListener("change", updateChallenges);
+}
+updateChallenges();
+$("resetChallenges").addEventListener("click", () => {
+  for (let i = 1; i <= 7; i++) $("c" + i).checked = false;
+  updateChallenges();
+});
+
+$("calculate").addEventListener("click", () => {
+  const raw = $("distance").value.trim();
+  const distance = Number(raw);
+  const factor = Number($("fuelType").value);
+  if (raw === "" || !Number.isFinite(distance) || distance < 0 || distance > 1000000) {
+    $("calcResult").textContent = "Enter a valid distance between 0 and 1,000,000 km.";
+    return;
+  }
+  const emissions = distance * factor;
+  $("calcResult").textContent = "Estimated emissions: " + emissions.toFixed(2) +
+    " kg CO₂e for " + distance.toLocaleString() + " km.";
+});
+
+function getPledge() {
+  return safeLoad("saveEarthPledge", null);
+}
+function showPledge(pledge) {
+  const box = $("pledgeResult");
+  if (!pledge) {
+    box.classList.add("hidden");
+    return;
+  }
+  box.classList.remove("hidden");
+  box.textContent = pledge.name + " promises to " +
+    pledge.action.toLowerCase() + ". Every positive step counts! 🌱";
+}
+const existingPledge = getPledge();
+if (existingPledge) {
+  $("personName").value = existingPledge.name;
+  $("pledgeChoice").value = existingPledge.action;
+  showPledge(existingPledge);
+}
+$("pledgeForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const name = $("personName").value.trim();
+  const action = $("pledgeChoice").value;
+  if (!name) return;
+  const pledge = {name, action};
+  if (safeSave("saveEarthPledge", pledge)) {
+    showPledge(pledge);
+  } else {
+    $("pledgeResult").classList.remove("hidden");
+    $("pledgeResult").textContent = "Your browser could not save the pledge. You can still share it manually.";
+  }
+});
+$("sharePledge").addEventListener("click", async () => {
+  const pledge = getPledge();
+  if (!pledge) {
+    $("pledgeResult").classList.remove("hidden");
+    $("pledgeResult").textContent = "Save your pledge first, then you can share it.";
+    return;
+  }
+  const message = pledge.name + " promises to " + pledge.action.toLowerCase() +
+    " to help protect our planet! 🌍💚";
+  try {
+    if (navigator.share) {
+      await navigator.share({title:"My Green Pledge", text:message});
+    } else if (navigator.clipboard) {
+      await navigator.clipboard.writeText(message);
+      $("pledgeResult").classList.remove("hidden");
+      $("pledgeResult").textContent = "Pledge copied! You can now paste and share it.";
+    } else {
+      $("pledgeResult").classList.remove("hidden");
+      $("pledgeResult").textContent = message;
+    }
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      $("pledgeResult").textContent = "Sharing is unavailable here. You can copy your pledge manually.";
+    }
+  }
+});
+</script>
+</body>
+</html>
